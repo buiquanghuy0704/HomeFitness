@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Update Videos</title>
+        <!-- Navbar -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="/writeblogs.css" />
+    </head>
+    <body>
+
+        <!-- Update videos -->
+        <div class="w3-black" id="tour">
+            <div class="w3-content" style="max-width: 1100px;">
+                <!-- About Section -->
+                <div class="w3-row w3-padding-64" id="about">
+                    <div class="w3-col m6 w3-padding-large w3-hide-small">
+                        <img src="https://i.pinimg.com/236x/5c/ab/b6/5cabb68de99c3bba3d652a5d2750b3e5.jpg" class="w3-round w3-image w3-opacity-min" alt="Cooking Image" width="400" height="550" />
+                    </div>
+
+                    <div class="w3-col m6 w3-padding-large">
+                        <h1 class="w3-center">Update Videos</h1>
+                        <p class="w3-center" style="font-size: 17px; color: rgb(103, 189, 103);"><i> ~ Innovative ~ </i></p>
+                        <br />
+                        <br />
+                        <div>
+                            <form action="/do-update-videos" method="POST">
+                                <input type="hidden" name="id" value="{{model._id}}">
+                                <input type="text" name="category" value="{{ model.category }}" placeholder="Category.." required/>
+                                <input type="text" name="name" value="{{ model.name }}" placeholder="Name for the class.." required/>
+                                <input type="text" name="instructor" value="{{ model.instructor }}" placeholder="Instructor.." required/>
+                                <input type="text" name="image" value="{{ model.image }}" placeholder="Image.." required/>
+                                <input type="text" name="video" value="{{ model.video }}" placeholder="Video.." required/>
+                                <input type="text" name="content" value="{{ model.content }}" placeholder="Content.." required/>
+                                <input type="text" name="difficulty" value="{{ model.difficulty }}" placeholder="Difficulty.." required/>
+                                <input type="text" name="equipment" value="{{ model.equipment }}" placeholder="Equipment.." required/>
+                                <input type="text" name="calories" value="{{ model.calories }}" placeholder="Calories burnt.." required/>
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </div>
+                        <br />
+                        <p><i>Thank you for your contribution</i></p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

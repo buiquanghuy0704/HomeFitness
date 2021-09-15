@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>List of posts</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/statistics-products.css" />
+        <link rel="stylesheet" href="/search.css" />
+        <!-- Button -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="/button.css" />
+        <!-- Collapse -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- content -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    </head>
+    <body>
+        <!-- Top container -->
+        <div class="w3-bar w3-top w3-black w3-large" style="z-index: 4;">
+            <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i> Menu</button>
+            <span class="w3-bar-item w3-right" style="font-family: Freestyle Script; font-size: 25px; color: rgb(0, 255, 128);">Home Fitness</span>
+        </div>
+        <br />
+        <br />
+        <!-- Sidebar/menu -->
+        <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 300px;" id="mySidebar">
+            <br />
+            <div class="w3-container w3-row">
+                <div class="w3-col s4">
+                     <img src="{{admin.image}}" class="w3-circle w3-margin-right" style="width: 56px;height: 66px; border: 2px solid black;"  />
+                </div>
+                <div class="w3-col s8 w3-bar">
+                    <span>Welcome, <strong style="font-family: Freestyle Script; font-size: 23px; color: green;">{{admin.username}}</strong></span><br />
+                    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+                    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+                    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+                </div>
+            </div>
+            <hr />
+            <div class="w3-container">
+                <h4>Dashboard</h4>
+                <hr style="border-top: 1px solid rgb(209, 197, 197);" />
+            </div>
+            <div class="w3-bar-block">
+                <a href="/admin" class="w3-bar-item w3-button w3-padding " style="text-decoration: none;"><i class="fa fa-users fa-fw"></i> Overview</a>
+                <a href="/statistics-accounts" class="w3-bar-item w3-button w3-padding" style="text-decoration: none;"><i class="bi bi-person-badge-fill"></i> User accounts</a>
+                <a href="/statistics-tips" class="w3-bar-item w3-button w3-padding" style="text-decoration: none;"><i class="bi bi-journal-medical"></i> List of tips</a>
+                <a href="/statistics-videos" class="w3-bar-item w3-button w3-padding" style="text-decoration: none;"><i class="bi bi-file-play-fill"></i> List of videos</a>
+                <a href="/statistics-classes" class="w3-bar-item w3-button w3-padding" style="text-decoration: none;"><i class="bi bi-joystick"></i> List of classes</a>
+                <a href="/statistics-trainers" class="w3-bar-item w3-button w3-padding" style="text-decoration: none;"><i class="bi bi-person-bounding-box"></i> List of trainers</a>
+                <a href="/statistics-products" class="w3-bar-item w3-button w3-padding" style="text-decoration: none;"><i class="bi bi-box-seam"></i> List of products</a>
+                <a href="/statistics-posts" class="w3-bar-item w3-button w3-padding w3-black" style="text-decoration: none;"><i class="bi bi-file-earmark-post"></i> List of posts</a>
+
+                <br />
+            </div>
+        </nav>
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor: pointer;" title="close side menu" id="myOverlay"></div>
+        <br />
+        <div class="w3-main" style="margin-left: 320px; margin-top: 43px;">
+            <header class="w3-container w3-xlarge">
+                <form class="search-form" style="margin-left: 5px;" action="/search-posts" method="get">
+                    <input type="text" name="txtSearch" placeholder="Search.." />
+                </form>
+            </header>
+            <h1>List of posts</h1>
+            <br />
+            <table id="products" style="margin-left: 10px;">
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                    <th>Date</th>
+                    <th>Content</th>
+                    <th>Image</th>
+                    <th>Option</th>
+                </tr>
+                {{#each model}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.author}}</td>
+                    <td>{{this.date}}</td>
+                    <td style="font-size: 10px;">
+                        <button type="button" class="custom-btn btn-5" data-toggle="collapse" data-target="#demo"><span>Content</span></button>
+                        <div id="demo" class="collapse">
+                            {{this.content}}
+                        </div>
+                    </td>
+                    <td><img src="{{this.image}}" style="width: 65px; height: 65px; text-align: center;" /></td>
+                    <td>
+                        <center>
+                            <button type="submit" class="custom-btn btn-7" onclick="document.getElementById('{{_id}}').style.display='block'"><span>Remove</span></button>
+                            <form id="{{_id}}" class="modal" style="width: 30%; height: 30%;">
+                                <div class="container">
+                                    <h1>Delete Post</h1>
+                                    <p>Are you sure you want to delete this post?</p>
+                                    <div class="clearfix">
+                                        <button type="button" onclick="document.getElementById('{{_id}}').style.display='none'" class="custom-btn btn-4"><span>Cancel</span></button>
+                                        <a href="/remove/posts/{{_id}}" style="text-decoration: none;">
+                                            <button type="button" onclick="document.getElementById('{{_id}}').style.display='none'" class="custom-btn btn-7"><span>Delete</span></button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </center>
+                    </td>
+                </tr>
+                {{/each}}
+            </table>
+            <br />
+            <br />
+        </div>
+        <script>
+            // Get the modal
+            var modal = document.getElementById("id01");
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        </script>
+    </body>
+</html>

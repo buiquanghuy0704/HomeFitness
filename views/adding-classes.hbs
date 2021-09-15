@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Classes</title>
+        <!-- Navbar -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="/writeblogs.css" />
+    </head>
+    <body>
+        
+        <!-- Adding new post -->
+        <div class="w3-black" id="tour">
+            <div class="w3-content" style="max-width: 1300px;">
+                <!-- About Section -->
+                <div class="w3-row w3-padding-64" id="about">
+                    <div class="w3-col m6 w3-padding-large w3-hide-small" >
+                        <img src="https://i.pinimg.com/236x/4d/20/28/4d202822fad3ac14f6a5c3ac3b2c18e2.jpg" alt="Cooking Image" width="500" height="650" style="margin-left: 50px;" />
+                    </div>
+
+                    <div class="w3-col m6 w3-padding-large" style="width: 500px;">
+                        <h1 class="w3-center">Add new classes</h1>
+                        <p class="w3-center" style="font-size: 17px; color: rgb(103, 189, 103);"><i> ~ Create Creativity ~ </i></p>
+                        <br />
+                        <br />
+                        <div >
+                            <form action="/do-adding-classes" method="post">
+                                <br />
+                                <textarea type="text" name="name" placeholder="Name of the class.." rows="1" required/></textarea> <br>
+                                <textarea type="text" name="date" placeholder="Date.." rows="1"  required/></textarea> <br>
+                                <textarea type="text" name="content" placeholder="Introduction" rows="2" required/></textarea> <br>
+                                <textarea type="text" name="image" placeholder="Link for your image.." rows="1" required/></textarea> <br>
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </div>
+                        <br />
+                        <p><i>Thank you for your contribution</i></p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

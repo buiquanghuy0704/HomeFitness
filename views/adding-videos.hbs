@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Videos</title>
+        <!-- Navbar -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="/writeblogs.css" />
+    </head>
+    <body>
+
+        <!-- Adding new post -->
+        <div class="w3-black" id="tour">
+            <div class="w3-content" style="max-width: 1300px;">
+                <!-- About Section -->
+                <div class="w3-row w3-padding-64" id="about">
+                    <div class="w3-col m6 w3-padding-large w3-hide-small" >
+                        <img src="https://i.pinimg.com/474x/46/a7/e6/46a7e6677dc245448f24dcc9402aec4a.jpg" class="w3-round w3-image w3-opacity-min" alt="Cooking Image" width="500" height="650" style="margin-left: 50px;" />
+                    </div>
+
+                    <div class="w3-col m6 w3-padding-large" style="width: 550px; margin-left: 20px">
+                        <h1 class="w3-center">Add new videos</h1>
+                        <p class="w3-center" style="font-size: 17px; color: rgb(103, 189, 103);"><i> ~ Create Creativity ~ </i></p>
+                        <br />
+                        <br />
+                        <div>
+                            <form action="/do-adding-videos" method="post">
+                                {{!-- <select name="country">
+                                    <option value="gain weight">Chest videos</option>
+                                    <option value="lose weight">Shoulder videos</option>
+                                    <option value="keep fit">Arm videos</option>
+                                    <option value="keep fit">Back videos</option>
+                                    <option value="keep fit">Abs videos</option>
+                                </select> --}}
+                                <div class = "category" >
+                                    <input type="radio" id="ca1" name="category" value="Chest videos">
+                                    <label for="ca1">  Chest  </label>
+                                    <span style="margin-left: 15px">
+                                        <input type="radio" id="ca2" name="category" value="Shoulder videos">
+                                        <label for="ca2"> Shoulders</label>
+                                    </span>
+                                    <span style="margin-left: 15px">
+                                        <input type="radio" id="ca3" name="category" value="Abs videos">
+                                        <label for="ca3"> Abs</label>
+                                    </span>
+                                    <span style="margin-left: 15px">
+                                        <input type="radio" id="ca3" name="category" value="Arm videos">
+                                        <label for="ca3"> Abs</label>
+                                    </span>
+                                    <span style="margin-left: 15px">
+                                        <input type="radio" id="ca3" name="category" value="Back videos">
+                                        <label for="ca3"> Back</label>
+                                    </span>
+                                </div>
+                                <br />
+                                <textarea type="text" name="name" placeholder="Name of the tip.." rows="1" required/></textarea> <br>
+                                <textarea type="text" name="instructor" placeholder="Name of the instructor.."rows="1" required/></textarea>  <br>
+                                <textarea type="text" name="image" placeholder="Link for your image.." rows="1" required/></textarea>  <br>
+                                <textarea type="text" name="video" placeholder="Link for your video.." rows="1" required/></textarea>  <br>
+                                <textarea type="text" name="content" placeholder="Your content.." rows="5" cols="65" required></textarea>
+                                <textarea type="number" name="calories" placeholder="Calories burnt.." rows="1" required/></textarea>  <br>
+                                <input type="number" name="difficulty" placeholder="Difficulty.." rows="1" required/>  <br>
+                                <textarea type="text" name="equipment" placeholder="Equipment.." rows="1" required/></textarea>  <br>
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </div>
+                        <br />
+                        <p><i>Thank you for your contribution</i></p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Tips</title>
+        <!-- Navbar -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="/writeblogs.css" />
+    </head>
+    <body>
+      
+        <!-- Adding new post -->
+        <div class="w3-black" id="tour">
+            <div class="w3-content" style="max-width: 1100px;">
+                <!-- About Section -->
+                <div class="w3-row w3-padding-64" id="about">
+                    <div class="w3-col m6 w3-padding-large w3-hide-small">
+                        <img src="https://i.pinimg.com/474x/0f/cf/28/0fcf2896fe52c8666f3db66b57b71a61.jpg" class="w3-round w3-image w3-opacity-min" alt="Cooking Image" width="600" height="750" />
+                    </div>
+
+                    <div class="w3-col m6 w3-padding-large">
+                        <h1 class="w3-center">Add new tips</h1>
+                        <p class="w3-center" style="font-size: 17px; color: rgb(103, 189, 103);"><i> ~ Stay Positive ~ </i></p>
+                        <br />
+                        <br />
+                        <div>
+                            <form action="/do-adding-tips" method="post">
+                                <div class = "category" >
+                                    <input type="radio" id="ca1" name="category" value="Cooking tips">
+                                    <label for="ca1">  Cooking tips </label>
+                                    <span style="margin-left: 15px">
+                                        <input type="radio" id="ca2" name="category" value="Nutrition facts">
+                                        <label for="ca2"> Nutrition facts</label>
+                                    </span>
+                                    <span style="margin-left: 15px">
+                                        <input type="radio" id="ca3" name="category" value="Meal plans">
+                                        <label for="ca3"> Meal plans</label>
+                                    </span>
+                                </div>
+                                <br />
+                                <textarea type="text" name="name" placeholder="Name of the tip.." rows="1" required/></textarea> <br>
+                                <textarea type="text" name="author" placeholder="Name of the author.." rows="1" required/></textarea> <br>
+                                <textarea type="text" name="image" placeholder="Link for your image.." rows="1" required/></textarea> <br>
+                                <textarea type="text" name="image1" placeholder="Link for your image1.." rows="1" required/></textarea> <br>
+                                <textarea type="text" name="image2" placeholder="Link for your image2.." rows="1" required/></textarea> <br>
+                                <textarea type="text" name="content" placeholder="Your content.." rows="5" cols="65"required></textarea>
+                                
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </div>
+                        <br />
+                        <p><i>Thank you for your contribution</i></p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Accounts</title>
+        <!-- Navbar -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/writeblogs.css" />
+
+    </head>
+    <body>
+
+        <!-- Adding new post -->
+        <div class="w3-black" id="tour">
+            <div class="w3-content" style="max-width: 1300px;">
+                <!-- About Section -->
+                <div class="w3-row w3-padding-64" id="about">
+                    <div class="w3-col m6 w3-padding-large w3-hide-small" >
+                        <img src="https://i.pinimg.com/236x/74/b4/32/74b432696b5956c86d5626731908c479.jpg" alt="Cooking Image" width="500" height="650" style="margin-left: 50px;" />
+                    </div>
+
+                    <div class="w3-col m6 w3-padding-large" style="width: 500px;">
+                        <h1 class="w3-center">Add new accounts</h1>
+                        <p class="w3-center" style="font-size: 17px; color: rgb(103, 189, 103);"><i> ~ Create Creativity ~ </i></p>
+                        <br />
+                        <br />
+                        <div >
+                            <form action="/do-adding-accounts" method="post">
+                                <div class = "role" >
+                                    <input type="radio" id="ca1" name="role" value="Customers">
+                                    <label for="ca1">  Customers </label>
+                                    <span style="margin-left: 15px">
+                                        <input type="radio" id="ca2" name="role" value="Admin">
+                                        <label for="ca2"> Admin</label>
+                                    </span>
+                                </div>
+                                <p style="color: #f00;">{{ errorMessage }}</p>
+                                <textarea type="text" name="username" placeholder="Username.." rows="1"  minlength="8" maxlength="30" required /></textarea>
+                                <p style="color: #f00;">{{ errorMessage1 }}</p>
+                                {{!-- <input type="email" name="email" placeholder="Email.." rows="1" minlength="8" required /> --}}
+                                <textarea type="email" name="email" placeholder="Email.." rows="1" minlength="8" required /></textarea>
+                                <textarea type="text" name="image" placeholder="Your image link.." rows="1" required /></textarea> <br>
+                                    <input class="form-control" type="password" id="psw" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter password" required />
+                                    <div id="message">
+                                        <h5>Password must contain:</h5>
+                                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                                        <p id="number" class="invalid">A <b>number</b></p>
+                                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                                    </div>
+                                
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </div>
+                        <br />
+                        <p style="text-align: center;"><i>Thank you for your contribution</i></p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var myInput = document.getElementById("psw");
+            var letter = document.getElementById("letter");
+            var capital = document.getElementById("capital");
+            var number = document.getElementById("number");
+            var length = document.getElementById("length");
+
+            // When the user clicks on the password field, show the message box
+            myInput.onfocus = function () {
+                document.getElementById("message").style.display = "block";
+            };
+
+            // When the user clicks outside of the password field, hide the message box
+            myInput.onblur = function () {
+                document.getElementById("message").style.display = "none";
+            };
+
+            // When the user starts to type something inside the password field
+            myInput.onkeyup = function () {
+                // Validate lowercase letters
+                var lowerCaseLetters = /[a-z]/g;
+                if (myInput.value.match(lowerCaseLetters)) {
+                    letter.classList.remove("invalid");
+                    letter.classList.add("valid");
+                } else {
+                    letter.classList.remove("valid");
+                    letter.classList.add("invalid");
+                }
+
+                // Validate capital letters
+                var upperCaseLetters = /[A-Z]/g;
+                if (myInput.value.match(upperCaseLetters)) {
+                    capital.classList.remove("invalid");
+                    capital.classList.add("valid");
+                } else {
+                    capital.classList.remove("valid");
+                    capital.classList.add("invalid");
+                }
+
+                // Validate numbers
+                var numbers = /[0-9]/g;
+                if (myInput.value.match(numbers)) {
+                    number.classList.remove("invalid");
+                    number.classList.add("valid");
+                } else {
+                    number.classList.remove("valid");
+                    number.classList.add("invalid");
+                }
+
+                // Validate length
+                if (myInput.value.length >= 8) {
+                    length.classList.remove("invalid");
+                    length.classList.add("valid");
+                } else {
+                    length.classList.remove("valid");
+                    length.classList.add("invalid");
+                }
+            };
+        </script>
+    </body>
+</html>

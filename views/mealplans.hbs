@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Meal Plans</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <!-- blogs -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma" />
+        <link rel="stylesheet" href="/cookingtips.css" />
+
+        <!-- Group button -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-black w3-card">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="/" class="w3-bar-item w3-button w3-padding-large">Home</a>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Videos">Videos <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/chest" class="w3-bar-item w3-button">Chest workouts</a>
+                        <a href="/shoulder" class="w3-bar-item w3-button">Shoulder workouts</a>
+                        <a href="/arm" class="w3-bar-item w3-button">Arm workouts</a>
+                        <a href="/back" class="w3-bar-item w3-button">Back workouts</a>
+                        <a href="/abs" class="w3-bar-item w3-button">Abs workouts</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Healthy Living">Healthy Living <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/cookingtips" class="w3-bar-item w3-button">Cooking tips</a>
+                        <a href="/nutritionfacts" class="w3-bar-item w3-button">Nutrition facts</a>
+                        <a href="/mealplans" class="w3-bar-item w3-button">Meal plans</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Community">Community <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/community" class="w3-bar-item w3-button">Community</a>
+                        <a href="/write-posts" class="w3-bar-item w3-button">Write blogs</a>
+                        <a href="/myblogs" class="w3-bar-item w3-button">My blogs</a>
+                    </div>
+                </div>
+
+                <a href="/store" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Store</a>
+                <a href="/logincus" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Login</a>
+                
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <!-- Page content -->
+
+        <div class="w3-content" style="max-width: 1500px; margin-top: 46px;">
+            <div class="container">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="https://img.livestrong.com/630x/clsd/getty/74bf6dd9ce354b7bb7ad49d850e7c6b3.jpg?type=webp" alt="Cooking Tips" style="width: 100%; height: 70%;" />
+                            <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"></div>
+                        </div>
+
+                        <div class="item">
+                            <img src="https://img.livestrong.com/630x/clsd/getty/84d3ecde9fa04a8198f141ca6261ab10.jpg?type=webp" alt="Fish" style="width: 100%;" />
+                        </div>
+
+                        <div class="item">
+                            <img src="https://img.livestrong.com/630x/clsd/getty/1cb80d319427413398ffecda60489e40.jpg?type=webp" alt="Green bean" style="width: 100%;" />
+                        </div>
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <!-- !PAGE CONTENT! -->
+            <div class="w3-main w3-content w3-padding" style="max-width: 1200px; margin-top: 30px;">
+                <div class="w3-container w3-content w3-center w3-padding-64" style="max-width: 800px;" id="band">
+                    <h1>Meal Planning Made Affordable</h1>
+                    <p class="w3-opacity"><i> ~ Meal Plans ~ </i></p>
+                    <p>Between Monday and Friday, scurrying to get supper on the table seems like Mission Impossible. But there's a simple solution that may even crown you a weeknight hero: Meal planning.</p>
+                </div>
+                <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+                    {{#each model}}
+                    <div class="w3-quarter">
+                        <a href="/meal-content/{{_id}} " style="text-decoration: none">
+                            <img src="{{image}}" alt="Tip 1" style="width: 100%; height: 180px; border: 3px solid rgb(20, 16, 16);" />
+                        </a>
+                        <h4>{{name}}</h4>
+                        <p style="font-size: 10px;"><i>By {{author}}</i></p>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <!-- Pagination -->
+                <div class="w3-center w3-padding-32">
+                    <div class="w3-bar">
+                        <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+                        <a href="/mealplans" class="w3-bar-item w3-black w3-button">1</a>
+                        <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+                        <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+                    </div>
+                </div>
+
+                <hr id="about" />
+
+                <!-- About Section -->
+
+                <div class="w3-row w3-padding-64" id="menu">
+                    <div class="w3-col l6 w3-padding-large">
+                        <h3><b>Fun Fact!</b></h3>
+                        <h6><i>With Passion For Real, Good Food</i></h6>
+                        <br />
+                        <p>
+                            <i>
+                                "Buttermilk lends a creamy texture and tart flavor to dips, sauces and salad dressings. In baked goods, it helps activate the leavening action of baking soda and adds a rich, tender taste with less fat than
+                                whole milk"
+                            </i>
+                        </p>
+                        <p style="font-size: 10px;"><i> ~ Enjoy ~</i></p>
+                    </div>
+                    <div class="w3-col l6 w3-padding-large">
+                        <img src="https://img.livestrong.com/630x/clsd/getty/680cc048901f4bfb8cadeb79512e0ea1.jpg?type=webp" alt="Menu" style="width: 100%; height: 100%;" />
+                    </div>
+                </div>
+
+                <!-- End page content -->
+            </div>
+
+            <script>
+                // Script to open and close sidebar
+                function w3_open() {
+                    document.getElementById("mySidebar").style.display = "block";
+                }
+
+                function w3_close() {
+                    document.getElementById("mySidebar").style.display = "none";
+                }
+            </script>
+        </div>
+    </body>
+</html>

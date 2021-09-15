@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Products</title>
+        <!-- Navbar -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="/writeblogs.css" />
+    </head>
+    <body>
+        
+        <!-- Adding new post -->
+        <div class="w3-black" id="tour">
+            <div class="w3-content" style="max-width: 1100px;">
+                <!-- About Section -->
+                <div class="w3-row w3-padding-64" id="about">
+                    <div class="w3-col m6 w3-padding-large w3-hide-small">
+                        <img src="https://i.pinimg.com/236x/aa/4f/be/aa4fbe6f054612069c52f9392d4273f5.jpg" class="w3-round w3-image w3-opacity-min" alt="Cooking Image" width="400" height="550" />
+                    </div>
+
+                    <div class="w3-col m6 w3-padding-large">
+                        <h1 class="w3-center">Add new products</h1>
+                        <p class="w3-center" style="font-size: 17px; color: rgb(103, 189, 103);"><i> ~ High-quality ~ </i></p>
+                        <br />
+                        <br />
+                        <div>
+                            <form action="/do-adding-products" method="POST">
+                                <textarea type="text" name="name" placeholder="Name of the product.." rows="1" required /></textarea>
+                                <textarea type="text" name="category" placeholder="Category of the product.." rows="1" required /></textarea>
+                                <input type="number" name="price" placeholder="Price.." rows="1" required/>
+                                <input type="number" name="stock" placeholder="Stock.." rows="1" required/>
+                                <textarea type="text" name="image" placeholder="Link for the image.." rows="1" required/></textarea>
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </div>
+                        <br />
+                        <p><i>Thank you for your contribution</i></p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

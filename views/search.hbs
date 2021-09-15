@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/overallsearch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+    <!-- Collapse -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-black w3-card">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="/" class="w3-bar-item w3-button w3-padding-large">Home</a>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Videos">Videos <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/chest" class="w3-bar-item w3-button">Chest workouts</a>
+                        <a href="/shoulder" class="w3-bar-item w3-button">Shoulder workouts</a>
+                        <a href="/arm" class="w3-bar-item w3-button">Arm workouts</a>
+                        <a href="/back" class="w3-bar-item w3-button">Back workouts</a>
+                        <a href="/abs" class="w3-bar-item w3-button">Abs workouts</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Healthy Living">Healthy Living <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/cookingtips" class="w3-bar-item w3-button">Cooking tips</a>
+                        <a href="/nutritionfacts" class="w3-bar-item w3-button">Nutrition facts</a>
+                        <a href="/mealplans" class="w3-bar-item w3-button">Meal plans</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Community">Community <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/community" class="w3-bar-item w3-button">Community</a>
+                        <a href="/write-posts" class="w3-bar-item w3-button">Write blogs</a>
+                        <a href="/myblogs" class="w3-bar-item w3-button">My blogs</a>
+                    </div>
+                </div>
+
+                <a href="/store" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Store</a>
+                <a href="/logincus" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Login</a>
+                <a href="/search" class="w3-bar-item w3-button w3-padding-large w3-hide-small" style="margin-left: 670px; "><i class="fa fa-search" style="padding-top: 5px;" ></i></a>
+               
+            </div>
+        </div>
+    <h1 style="text-align: center; margin-top: 70px; font-size: 40px"><b>Search</b></h1>
+    <form action="/do-search" method="GET" style="margin-top: -40px;">
+        <input type="text" name="txtSearch" placeholder="Search...">
+        <hr style="border-top: 1px solid rgb(126, 106, 106);" />
+    </form>
+    <div class="container">
+    <br><br>
+    <h3 style="text-align: center;">{{message}}</h3>
+    <div class="posts">
+        
+        {{#each result}}
+        <div class="post">
+            <div class="post__image">
+                <img src="{{image}}" style="width:395px;">
+            </div>
+            <div class="post__content">
+                <div class="post__inside">
+                    <h3 class="post__title">{{name}}</h3>
+                    <p class="post__excerpt">
+                        <i style="opacity: 70%;font-size: 11px;">~ {{author}} ~</i>
+                    </p>
+                    
+                        <button class="btn--accent post__button" style="border-radius: 2rem;" data-toggle="collapse" data-target="#{{_id}}">
+                            Read more
+                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                        <br><br>
+                        <div id="{{_id}}" class="collapse"> 
+                            <p style="text-align: justify; font-size: 13px; padding-right: 4px;">"<i>{{content}}</i>"</p>
+                        </div>  
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{#each result1}}
+        <div class="post">
+            <div class="post__image">
+                <img src="{{image}}" style="width:395px;">
+            </div>
+            <div class="post__content">
+                <div class="post__inside">
+                    <h3 class="post__title">{{name}}</h3>
+                    <p class="post__excerpt">
+                        <i style="opacity: 70%;font-size: 11px;">~ {{instructor}} ~</i>
+                    </p>
+                    
+                       <button class="btn--accent post__button" style="border-radius: 2rem;" data-toggle="collapse" data-target="#{{_id}}">
+                            Read more
+                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                        <br><br>
+                        <div id="{{_id}}" class="collapse"> 
+                            <p style="text-align: justify; font-size: 13px; padding-right: 14px;">"<i>{{content}}</i>"</p>
+                        </div>  
+                    
+                    
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+<script>
+    
+</script>
+</body>
+</html>

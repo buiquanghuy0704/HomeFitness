@@ -1,0 +1,116 @@
+    #products {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 95%;
+    }
+    
+    #products td,
+    #products th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    
+    #products tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    #products tr:hover {
+        background-color: #ddd;
+    }
+    
+    #products th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: center;
+        background-color: #070707;
+        color: rgb(133, 233, 133);
+    }
+    
+    #mySidebar {
+        border: 1px solid rgb(218, 214, 214);
+    }
+    
+    .btn1 {
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+        padding: 5px 9px;
+        font-size: 12px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    /* Blue */
+    
+    .info {
+        border-color: #2196F3;
+        color: dodgerblue;
+    }
+    
+    .info:hover {
+        background: #2196F3;
+        color: white;
+    }
+    /* Green */
+    
+    .success {
+        border-color: #04AA6D;
+        color: green;
+    }
+    
+    .success:hover {
+        background-color: #04AA6D;
+        color: white;
+    }
+    /* Red */
+    
+    .danger {
+        border-color: #f44336;
+        color: red;
+    }
+    
+    .danger:hover {
+        background: #f44336;
+        color: white;
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    td {
+        font-size: 12px;
+    }
+    
+    .btn-group {
+        margin-left: 10px;
+    }
+    
+    .search-sec {
+        background: white;
+    }
+    
+    .search-slt {
+        display: block;
+        width: 10px;
+        font-size: 13px;
+        /* line-height: 1.5; */
+        color: #7eb2da;
+        background-color: rgb(7, 7, 7);
+        border: 1px solid #ccc;
+        height: 10px;
+        border-radius: 0;
+    }
+    
+    .wrn-btn {
+        width: 50%;
+        font-size: 13px;
+        font-weight: 400;
+        text-transform: capitalize;
+        height: 34px;
+        border-radius: 0;
+    }
+    
+    a {
+        color: white;
+    }

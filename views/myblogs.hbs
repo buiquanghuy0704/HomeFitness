@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <title>My blogs</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Modal -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+    <link rel="stylesheet" href="/myblogs.css" />
+    <link rel="stylesheet" href="/button.css" />
+    <!-- Nav bar -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <body class="w3-light-grey">
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-black w3-card">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="/" class="w3-bar-item w3-button w3-padding-large">Home</a>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Videos">Videos <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/chest" class="w3-bar-item w3-button">Chest workouts</a>
+                        <a href="/shoulder" class="w3-bar-item w3-button">Shoulder workouts</a>
+                        <a href="/arm" class="w3-bar-item w3-button">Arm workouts</a>
+                        <a href="/back" class="w3-bar-item w3-button">Back workouts</a>
+                        <a href="/abs" class="w3-bar-item w3-button">Abs workouts</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Healthy Living">Healthy Living <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/cookingtips" class="w3-bar-item w3-button">Cooking tips</a>
+                        <a href="/nutritionfacts" class="w3-bar-item w3-button">Nutrition facts</a>
+                        <a href="/mealplans" class="w3-bar-item w3-button">Meal plans</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Community">Community <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/community" class="w3-bar-item w3-button">Community</a>
+                        <a href="/write-posts" class="w3-bar-item w3-button">Write blogs</a>
+                        <a href="/myblogs" class="w3-bar-item w3-button">My blogs</a>
+                    </div>
+                </div>
+
+                <a href="/store" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Store</a>
+                <a href="/logincus" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Login</a>
+            </div>
+        </div>
+
+        <div class="w3-content" style="max-width: 1400px;">
+            <!-- Header -->
+            <header class="w3-container w3-center w3-padding-32">
+                <br />
+                <br />
+                <h1 style="font-size: 50px;"><i>{{customer.username}}</i>'s Blogs</h1>
+                <p><i> ~ Check out my stories ~ </i></p>
+                <a href="/logoutcus" class="w3-bar-item w3-button"><i class="fa fa-user"> Log Out</i></a>
+                <p style="color: red;">{{message}}</p>
+            </header>
+            <hr />
+            <!-- Grid -->
+            <div class="w3-row" style="background-color: black;">
+                <!-- Blog entries -->
+                <div class="w3-col l8 s12">
+                    <!-- Blog entry -->
+                    <div class="w3-col m6 w3-padding-large" style="width: 100%;">
+                        <header id="portfolio">
+                            <br />
+                            <div class="w3-container">
+                                <h1 style="font-family: Freestyle Script; color: rgb(127, 194, 136);">
+                                    <b>My Portfolio - <span style="color: rgb(219, 127, 127);"> My Creativity</span></b>
+                                </h1>
+                                <div class="w3-section w3-bottombar w3-padding-16"></div>
+                            </div>
+                        </header>
+
+                        <!-- First Photo Grid-->
+                        <div class="w3-row-padding">
+                            {{#each posts}}
+                            <div class="w3-third w3-container w3-margin-bottom">
+                                <div class="container">
+                                    <img class="image" src="{{image}}" alt="Norway" class="w3-hover-opacity" />
+                                    <div class="middle">
+                                        <div class="text">{{name}}</div>
+                                    </div>
+                                </div>
+                                {{!-- <img src="{{image}}" alt="Norway" style="width: 100%; height: 200px;" class="w3-hover-opacity" /> --}}
+                                <div class="w3-container w3-white">
+                                    <h6 style="font-family: Calibri Light;">
+                                        <br />
+                                        <button type="button" class="custom-btn btn-5" data-toggle="collapse" data-target="#{{_id}}"><span style="font-size: 15px;">Content</span></button>
+                                        <span style="margin-left: 90px;font-family:Freestyle Script; font-size: 25px; color: red; ">Enjoy!</span>
+                                        <br>
+                                        <div id="{{_id}}" class="collapse" style="margin-top: 40px;"> 
+                                            <p style="text-align: justify; font-size: 13px;">"<i>{{content}}</i>"</p>
+                                            <br />
+                                            <a href="/cus/remove-posts/{{this._id}}" style="text-decoration: none;">
+                                                <button class="custom-btn btn-7"><span>Remove</span></button>
+                                            </a>
+                                        </div>
+                                    </h6>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="w3-center w3-padding-32">
+                            <div class="w3-bar" style="color: white;">
+                                <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+                                <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+                                <a href="#" class="w3-bar-item w3-button w3-button">2</a>
+                                <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+                            </div>
+                        </div>
+                        <!-- END GRID -->
+                    </div>
+
+                    <!-- END GRID -->
+                </div>
+                <div class="w3-col l4">
+                    <!-- About Card -->
+                    <br />
+                    <br />
+                    <div class="w3-card w3-margin w3-margin-top" style="width: 75%;">
+                        <img src="{{customer.image}}" style="width: 100%;" />
+                        <div class="w3-container w3-white">
+                            <br>
+                            <p><i>"When I die, I know that the ones who love me will miss me."</i></p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+                <!-- END w3-content -->
+            </div>
+        </div>
+
+    </body>
+</html>

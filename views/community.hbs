@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Community</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+        <!-- Display blog -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+        <link rel="stylesheet" href="/community.css" />
+        <link rel="stylesheet" href="/button.css" />
+
+        <!-- Buttons -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-black w3-card">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="/" class="w3-bar-item w3-button w3-padding-large">Home</a>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Videos">Videos <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/chest" class="w3-bar-item w3-button">Chest workouts</a>
+                        <a href="/shoulder" class="w3-bar-item w3-button">Shoulder workouts</a>
+                        <a href="/arm" class="w3-bar-item w3-button">Arm workouts</a>
+                        <a href="/back" class="w3-bar-item w3-button">Back workouts</a>
+                        <a href="/abs" class="w3-bar-item w3-button">Abs workouts</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Healthy Living">Healthy Living <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/cookingtips" class="w3-bar-item w3-button">Cooking tips</a>
+                        <a href="/nutritionfacts" class="w3-bar-item w3-button">Nutrition facts</a>
+                        <a href="/mealplans" class="w3-bar-item w3-button">Meal plans</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Community">Community <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/community" class="w3-bar-item w3-button">Community</a>
+                        <a href="/write-posts" class="w3-bar-item w3-button">Write blogs</a>
+                        <a href="/myblogs" class="w3-bar-item w3-button">My blogs</a>
+                    </div>
+                </div>
+
+                <a href="/store" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Store</a>
+                <a href="/logincus" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Login</a>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="w3-content" style="max-width: 1200px;">
+            <!-- Header -->
+
+            <header class="w3-container w3-center w3-padding-32">
+                <br />
+                <br />
+                <div class="textcontainer">
+                    <span class="particletext confetti">Home Fitness Blog</span>
+                    <p><i> ~ Share your stories to everyone ~</i></p>
+                </div>
+            </header>
+            <hr />
+            
+            <!-- Grid -->
+            <div class="w3-row">
+                <!-- Blog entries -->
+                <div class="w3-col l8 s12">
+                    <!-- Blog entry -->
+                    {{#each model}}
+                    <div class="w3-card-4 w3-margin w3-white" id="{{_id}}">
+                        <img src="{{image}}" alt="Nature" style="width: 100%;" />
+                        <div class="w3-container">
+                            <br />
+                            <h3 style="display: inline-block"><b>{{name}}</b> </h3><h5 style="display: inline-block; float: right; opacity: 60%; font-size: 14px;"><b>{{avg}} </b>({{time_rates}} reviews) </h5>
+                            <h6>
+                                By {{author}} - <span class="w3-opacity"> <i> {{date}}</i></span>
+                            </h6>
+                        </div>
+                        <br>
+                        <div class="rating" style="margin-left: 20px;" style="width: 300px; background-color: red;">
+                            <form action="/update/rate-score/{{_id}}" method="post">
+                                <input class="form-control" type="number" name="rate_scores" placeholder="Rate post (0 - 5)" style="width: 160px; display:inline-block; margin-right: 10px;" min="1" max="5" required>
+                                <button type="submit" class="btn btn-outline-secondary" style="width: 100px; display:inline-block; margin-top: -5px;">Rate</button>
+                            </form>                        
+                        </div>
+                        <br><br>
+                        <div class="w3-container">
+                            <p style="text-align: justify;">
+                                {{content}}
+                            </p>
+                            <div class="w3-row">
+                                <div style="width: 100%;">
+                                    <button type="button" class="btn btn-outline-success" style="width: 100px;">Comment</button>
+                                    
+                                    <div class="panel">
+                                        <form class="comment-form" action="/add-comments/post/{{_id}}" method="POST">
+                                            <input autocomplete="off" type="text" class="comment" name="content" style="width: 75%;" placeholder="Add your comment..." required />
+                                            {{!-- <textarea type="text" class="comment" name="content" style="width: 75%;" placeholder="Add your comment..." rows="1" required /></textarea> --}}
+                                            <button type="submit" class="custom-btn btn-13" style="width: 140px; margin: 0 0 25px 25px; height: 49px;">Add Comment</button>
+                                        </form>
+                                        
+
+                                            {{#each comments}}
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="column1" style="background-color: white">
+                                                        <img src="{{this.image}}" style="width: 50px;height: 60px; border-radius: 50%;">
+                                                    </div>
+                                                    <div class="column2" style="background-color: white;">
+                                                        <h4><b>{{this.author}}</b></h4>
+                                                        <h6>{{this.content}}</h6>
+                                                    </div>
+                                                </div>            
+                                            </div>
+                                            {{/each}}                                  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    {{/each}}
+                </div>
+                <!-- Introduction menu -->
+                <div class="w3-col l4">
+                    <!-- About Card -->
+                    <div class="w3-card w3-margin w3-margin-top">
+                        <img src="https://i.pinimg.com/474x/ff/ef/90/ffef9035c0c3d7129c366dc3a8016f00.jpg" style="width: 100%;" />
+                        <div class="w3-container w3-white">
+                            <br />
+                            <h4><b>Designer - Huy Quang </b> <a class="fa fa-instagram w3-hover-opacity" style="text-decoration: none;" href="https://www.instagram.com/__huy.quang__/?hl=vi"></a></h4>
+
+                            <p style="text-align: justify;"><i>Hello, this is the place I have created to share the motivational stories. Share yours now!</i></p>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <!-- Posts -->
+                    <div class="w3-card w3-margin">
+                        <div class="w3-container w3-padding">
+                            <h4><b>Popular Posts</b></h4>
+                        </div>
+                        <ul class="w3-ul w3-hoverable w3-white">
+                            {{#each pop_posts}}
+                            <a href="#{{_id}}" style="color: black; text-decoration: none;">
+                                <li class="w3-padding-16">
+                                    <img src="{{image}}" alt="Image" class="w3-left w3-margin-right" style="width: 25%; height: 25%;" />
+                                    <span class="w3-large"><i>{{author}}</i> </span><br />
+                                    <span>{{name}}</span>
+                                </li>
+                            </a>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <hr />
+
+                    <!-- Labels / tags -->
+                    <div class="w3-card w3-margin">
+                        <div class="w3-container w3-padding">
+                            <h4>Tags</h4>
+                        </div>
+                        <div class="w3-container w3-white">
+                            <p>
+                                <span class="w3-tag w3-black w3-margin-bottom">Gain weight</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Lose weight</span>
+                                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Keep fit</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Exercise</span>
+                                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Gym</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Cooking recipes</span>
+                                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Food</span>
+                                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Lifestyle</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span>
+                                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Equipments</span>
+                                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- END Introduction Menu -->
+                </div>
+
+                <!-- END GRID -->
+            </div>
+            <br />
+
+            <!-- END w3-content -->
+        </div>
+
+        <script>
+            var acc = document.getElementsByClassName("btn btn-outline-success");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+
+            function initparticles() {
+                confetti();
+            }
+
+            function confetti() {
+                $.each($(".particletext.confetti"), function () {
+                    var confetticount = ($(this).width() / 50) * 10;
+                    for (var i = 0; i <= confetticount; i++) {
+                        $(this).append(
+                            '<span class="particle c' +
+                                $.rnd(1, 2) +
+                                '" style="top:' +
+                                $.rnd(10, 50) +
+                                "%; left:" +
+                                $.rnd(0, 100) +
+                                "%;width:" +
+                                $.rnd(6, 8) +
+                                "px; height:" +
+                                $.rnd(3, 4) +
+                                "px;animation-delay: " +
+                                $.rnd(0, 30) / 10 +
+                                's;"></span>'
+                        );
+                    }
+                });
+            }
+
+            jQuery.rnd = function (m, n) {
+                m = parseInt(m);
+                n = parseInt(n);
+                return Math.floor(Math.random() * (n - m + 1)) + m;
+            };
+
+            initparticles();
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

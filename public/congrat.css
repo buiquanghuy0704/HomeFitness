@@ -1,0 +1,354 @@
+@keyframes trophy {
+    0% {
+        transform: translateY(500px);
+        opacity: 0;
+    }
+    35% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fly--up {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    80% {
+        transform: translateY(-20vw);
+    }
+    100% {
+        transform: translateY(-15vw);
+        opacity: 0;
+    }
+}
+
+@keyframes fly--down {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    80% {
+        transform: translateY(20vw);
+    }
+    100% {
+        transform: translateY(15vw);
+        opacity: 0;
+    }
+}
+
+@keyframes fly--left {
+    0% {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    80% {
+        transform: translateX(-35vw);
+    }
+    100% {
+        transform: translateX(-180px);
+        opacity: 0;
+    }
+}
+
+@keyframes fly--right {
+    0% {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    80% {
+        transform: translateX(35vw);
+    }
+    100% {
+        transform: translateX(180px);
+        opacity: 0;
+    }
+}
+
+@keyframes fly--up--left {
+    0% {
+        transform: rotate(135deg) translate(0vw, 0vw);
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(135deg) translate(-3vw, 20vw);
+        opacity: 0;
+    }
+}
+
+@keyframes fly--up--right {
+    0% {
+        transform: rotate(45deg);
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(45deg) translate(-3vw, -20vw);
+        opacity: 0;
+    }
+}
+
+@keyframes fly--down--left {
+    0% {
+        transform: rotate(45deg) translate(0vw, 0vw);
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(45deg) translate(-3vw, 20vw);
+        opacity: 0;
+    }
+}
+
+@keyframes fly--down--right {
+    0% {
+        transform: rotate(135deg) translate(0vw, 0vw);
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(135deg) translate(0vw, -20vw);
+        opacity: 0;
+    }
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #82b1ff;
+}
+
+.container {
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    outline: solid 1px red;
+}
+
+.trophy {
+    z-index: 1;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    animation: trophy 0.5s 1 forwards;
+}
+
+.action {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 300px;
+    height: 25vw;
+    max-width: 300px;
+    width: 25vw;
+}
+
+.action .confetti,
+.action .confetti--purple {
+    z-index: -1;
+    position: absolute;
+    height: 50px;
+    width: 10px;
+    border-radius: 10px;
+    animation-fill-mode: forwards;
+    animation-duration: 0.75s;
+    animation-iteration-count: 1;
+    transform-origin: center middle;
+    opacity: 0;
+}
+
+.action .confetti {
+    top: 0;
+    left: calc(50% - 5px);
+    background-color: #ffea00;
+    animation-name: fly--up;
+    animation-delay: 0.35s;
+}
+
+.action .confetti.two {
+    top: auto;
+    bottom: 0;
+    animation-name: fly--down;
+}
+
+.action .confetti.three,
+.action .confetti.four {
+    top: calc(50% - 5px);
+    left: calc(50% - 25px);
+    height: 10px;
+    width: 50px;
+    animation-name: fly--left;
+}
+
+.action .confetti.four {
+    animation-name: fly--right;
+}
+
+.action .confetti--purple {
+    background-color: #6200ea;
+    animation-name: fly--up--left;
+    transform: rotate(135deg);
+    animation-delay: 0.5s;
+    left: 20%;
+    top: 20%;
+}
+
+.action .confetti--purple.two {
+    animation-name: fly--up--right;
+    left: auto;
+    right: 20%;
+    transform: rotate(45deg);
+}
+
+.action .confetti--purple.three {
+    top: auto;
+    bottom: 20%;
+    transform: rotate(45deg);
+    animation-name: fly--down--left;
+}
+
+.action .confetti--purple.four {
+    top: auto;
+    bottom: 20%;
+    left: auto;
+    right: 20%;
+    transform: rotate(135deg);
+    animation-name: fly--down--right;
+}
+
+.frame {
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+button {
+    margin: 20px;
+}
+
+.custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+
+/* 4 */
+
+.btn-4 {
+    background-color: #4dccc6;
+    background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+    line-height: 42px;
+    padding: 0;
+    border: none;
+}
+
+.btn-4:hover {
+    background-color: #89d8d3;
+    background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+}
+
+.btn-4 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-4:before,
+.btn-4:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .9), -4px -4px 6px 0 rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .9), inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+    transition: all 0.3s ease;
+}
+
+.btn-4:before {
+    height: 0%;
+    width: .1px;
+}
+
+.btn-4:after {
+    width: 0%;
+    height: .1px;
+}
+
+.btn-4:hover:before {
+    height: 100%;
+}
+
+.btn-4:hover:after {
+    width: 100%;
+}
+
+.btn-4 span:before,
+.btn-4 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .9), -4px -4px 6px 0 rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .9), inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+    transition: all 0.3s ease;
+}
+
+.btn-4 span:before {
+    width: .1px;
+    height: 0%;
+}
+
+.btn-4 span:after {
+    width: 0%;
+    height: .1px;
+}
+
+.btn-4 span:hover:before {
+    height: 100%;
+}
+
+.btn-4 span:hover:after {
+    width: 100%;
+}

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <!-- Chart -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="/statistics.css" />
+        <!-- Button -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="/button.css" />
+        <!-- content -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    </head>
+    <body class="w3-light-grey">
+        <!-- Top container -->
+        <div class="w3-bar w3-top w3-black w3-large" style="z-index: 4;">
+            <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i> Menu</button>
+            <span class="w3-bar-item w3-right" style="font-family: Freestyle Script; font-size: 25px; color: rgb(216, 118, 208);">Home Fitness</span>
+        </div>
+        <br />
+        <br />
+        <!-- Sidebar/menu -->
+        <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 300px;" id="mySidebar">
+            <br />
+            <div class="w3-container w3-row">
+                <div class="w3-col s4">
+                    <img src="{{admin.image}}" class="w3-circle w3-margin-right" style="width: 56px;height: 66px; border: 2px solid black;" />
+                </div>
+                <div class="w3-col s8 w3-bar">
+                    <span>Welcome, <strong style="font-family: Freestyle Script; font-size: 23px; color: rgb(204, 142, 92);">{{admin.username}}</strong></span><br />
+                    <a href="/logoutadmin" class="w3-bar-item w3-button"><i class="fa fa-user"> Log Out</i></a>
+                </div>
+            </div>
+            <hr />
+            <div class="w3-container" style="height: 50px;">
+                <div class="text">
+                    <h3>
+                        <span class="word wisteria" style="letter-spacing: 2px;">DASHBOARD</span>
+                        <span class="word belize" style="letter-spacing: 2px;">DASHBOARD</span>
+                        <span class="word pomegranate" style="letter-spacing: 2px;">DASHBOARD</span>
+                        <span class="word green" style="letter-spacing: 2px;">DASHBOARD</span>
+                        <span class="word midnight" style="letter-spacing: 2px;">DASHBOARD</span>
+                    </h3>
+                </div>
+            </div>
+            <hr style="border-top: 1px solid rgb(209, 197, 197);" />
+            <div class="w3-bar-block">
+                <a href="/admin" class="w3-bar-item w3-button w3-padding w3-black"><i class="fa fa-users fa-fw"></i> Overview</a>
+                <a href="/statistics-accounts" class="w3-bar-item w3-button w3-padding"><i class="bi bi-person-badge-fill"></i> User accounts</a>
+                <a href="/statistics-tips" class="w3-bar-item w3-button w3-padding"><i class="bi bi-journal-medical"></i> List of tips</a>
+                <a href="/statistics-videos" class="w3-bar-item w3-button w3-padding"><i class="bi bi-file-play-fill"></i> List of videos</a>
+                <a href="/statistics-classes" class="w3-bar-item w3-button w3-padding"><i class="bi bi-joystick"></i> List of classes</a>
+                <a href="/statistics-trainers" class="w3-bar-item w3-button w3-padding"><i class="bi bi-person-bounding-box"></i> List of trainers</a>
+                <a href="/statistics-products" class="w3-bar-item w3-button w3-padding"><i class="bi bi-box-seam"></i> List of products</a>
+                <a href="/statistics-posts" class="w3-bar-item w3-button w3-padding"><i class="bi bi-file-earmark-post"></i> List of posts</a>
+            </div>
+        </nav>
+
+        <!-- !PAGE CONTENT! -->
+        <div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
+            <!-- Header -->
+            <header class="w3-container" style="padding-top: 22px; margin-left: 20px;">
+                <h5 style="font-family: Freestyle Script; font-size: 35px;">
+                    <b>Total</b>
+                </h5>
+            </header>
+
+            <div class="w3-row-padding w3-margin-bottom">
+                <div class="w3-quarter" style="width: 250px; margin-left: 30px;">
+                    <div class="w3-container w3-red w3-padding-16" style="border-radius: 15px;">
+                        <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>{{num_posts}}</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Total posts</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter" style="width: 250px;">
+                    <div class="w3-container w3-blue w3-padding-16" style="border-radius: 15px;">
+                        <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>{{avenue}}</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Avenue</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter" style="width: 250px;">
+                    <div class="w3-container w3-teal w3-padding-16" style="border-radius: 15px;">
+                        <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>{{num_comments}}</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Total comments</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter" style="width: 250px;">
+                    <div class="w3-container w3-orange w3-text-white w3-padding-16" style="border-radius: 15px;">
+                        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3>{{num_users}}</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Total users</h4>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <div class="w3-panel">
+                <div class="w3-row-padding" style="margin-left: 15px;">
+                    <h5 style="font-family: Freestyle Script; font-size: 35px;"><b>Future Plans</b></h5>
+                    <div class="cont s--inactive">
+                        <!-- cont inner start -->
+                        <div class="cont__inner">
+                            <!-- el start -->
+                            {{#each plan}}
+                            <div class="el">
+                                <div class="el__overflow">
+                                    <div class="el__inner">
+                                        <div class="el__bg"></div>
+                                        <div class="el__preview-cont">
+                                            <h2 class="el__heading" style="text-align: center;">{{title}}</h2>
+                                        </div>
+                                        <div class="el__content">
+                                            <div class="el__text" style="font-family: Freestyle Script; color: lightblue; letter-spacing: 3px;">{{name}}</div>
+                                            <div class="el__close-btn"></div>
+                                            <br />
+                                            <p style="color: white; text-align: justify;">{{content}}</p>
+                                            <br />
+                                            <a href="/update-plans/{{_id}} " style="text-decoration: none;">
+                                                <button type="submit" class="custom-btn btn-8"><span>Update</span></button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <!-- cont inner end -->
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="w3-container">
+                <h5 style="font-family: Freestyle Script; font-size: 35px; margin-left: 20px;"><b>Charts</b></h5>
+                <br />
+                <div class="w3-half" style="margin-left: 30px; width: 470px;">
+                    <h5 style="font-family: Freestyle Script; color:rgb(26, 202, 120);font-size: 28px;"><b>Users</b></h5>
+                    <canvas id="chart1"></canvas>
+                </div>
+                <div class="w3-half" style="margin-left: 50px; width: 470px;">
+                    <h5 style="font-family: Freestyle Script;color:rgb(26, 202, 120);font-size: 28px; "><b>Posts</b></h5>
+                    <canvas id="chart2"></canvas>
+                </div>
+            </div>
+            <hr />
+            <div class="w3-container">
+                <h5 style="font-family: Freestyle Script; font-size: 35px;"><b>Recent Users</b></h5>
+                <ul class="w3-ul w3-card-4 w3-white">
+                    {{#each recent_users}}
+                    <li class="w3-padding-16">
+                        <img src="{{image}}" class="w3-left w3-circle w3-margin-right" style="width: 35px; height: 50px; margin-top: -6px;" />
+                        <span class="w3-xlarge">
+                            {{username}}
+                        </span>
+                    </li>
+                    {{/each}}
+                    <br />
+                </ul>
+            </div>
+                    
+                    <hr />
+
+                    <br />
+                    <div style="background-color: black;">
+                        <div class="w3-row">
+                            <div class="w3-container w3-third">
+                                <h4 class="w3-bottombar w3-border-green" style="font-family: Freestyle Script; font-size: 30px; color: rgb(26, 202, 120);">Demographic</h4>
+                                <p style="color: white;">Language</p>
+                                <p style="color: white;">Country</p>
+                                <p style="color: white;">City</p>
+                            </div>
+                            <div class="w3-container w3-third">
+                                <h5 class="w3-bottombar w3-border-red" style="font-family: Freestyle Script; font-size: 30px; color: rgb(226, 21, 21);">System</h5>
+                                <p style="color: white;">Browser</p>
+                                <p style="color: white;">OS</p>
+                                <p style="color: white;">More</p>
+                            </div>
+                            <div class="w3-container w3-third">
+                                <h5 class="w3-bottombar w3-border-orange" style="font-family: Freestyle Script; font-size: 30px; color: rgb(216, 156, 27);">Target</h5>
+                                <p style="color: white;">Users</p>
+                                <p style="color: white;">Active</p>
+                                <p style="color: white;">Geo</p>
+                                <p style="color: white;">Interests</p>
+                            </div>
+                        </div>
+                    </div>
+            
+        </div>
+        <script>
+            // Get the Sidebar
+            var mySidebar = document.getElementById("mySidebar");
+
+            // Get the DIV with overlay effect
+            var overlayBg = document.getElementById("myOverlay");
+
+            // Toggle between showing and hiding the sidebar, and add overlay effect
+            function w3_open() {
+                if (mySidebar.style.display === "block") {
+                    mySidebar.style.display = "none";
+                    overlayBg.style.display = "none";
+                } else {
+                    mySidebar.style.display = "block";
+                    overlayBg.style.display = "block";
+                }
+            }
+
+            // Close the sidebar with the close button
+            function w3_close() {
+                mySidebar.style.display = "none";
+                overlayBg.style.display = "none";
+            }
+
+            var ctx = document.getElementById("chart1").getContext("2d");
+            var chart1 = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                    datasets: [
+                        {
+                            label: "Number of new accounts/day",
+                            data: [{{day1}},{{day2}},{{day3}},{{day4}},{{day5}},{{day6}},{{day7}}],
+                            backgroundColor: [
+                                "rgba(255, 99, 132, 0.2)",
+                                "rgba(54, 162, 235, 0.2)",
+                                "rgba(255, 206, 86, 0.2)",
+                                "rgba(75, 192, 192, 0.2)",
+                                "rgba(153, 102, 255, 0.2)",
+                                "rgba(255, 159, 64, 0.2)",
+                                "rgba(100, 159, 100, 0.2)",
+                            ],
+                            borderColor: [
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(153, 102, 255, 1)",
+                                "rgba(255, 159, 64, 1)",
+                                "rgba(100, 159, 100, 1)",
+                            ],
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+            var ctx = document.getElementById("chart2").getContext("2d");
+            var chart2 = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                    datasets: [
+                        {
+                            label: "Number of new posts/day",
+                            data: [{{p_day1}},{{p_day2}},{{p_day3}},{{p_day4}},{{p_day5}},{{p_day6}},{{p_day7}}],
+                            backgroundColor: [
+                                "rgba(255, 99, 132, 0.2)",
+                                "rgba(54, 162, 235, 0.2)",
+                                "rgba(255, 206, 86, 0.2)",
+                                "rgba(75, 192, 192, 0.2)",
+                                "rgba(153, 102, 255, 0.2)",
+                                "rgba(255, 159, 64, 0.2)",
+                                "rgba(100, 159, 100, 0.2)",
+                            ],
+                            borderColor: [
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                                "rgba(255, 206, 86, 1)",
+                                "rgba(75, 192, 192, 1)",
+                                "rgba(153, 102, 255, 1)",
+                                "rgba(255, 159, 64, 1)",
+                                "rgba(100, 159, 100, 1)",
+                            ],
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        },
+                    },
+                },
+            });
+
+
+            var words = document.getElementsByClassName("word");
+            var wordArray = [];
+            var currentWord = 0;
+
+            words[currentWord].style.opacity = 1;
+            for (var i = 0; i < words.length; i++) {
+                splitLetters(words[i]);
+            }
+
+            function changeWord() {
+                var cw = wordArray[currentWord];
+                var nw = currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
+                for (var i = 0; i < cw.length; i++) {
+                    animateLetterOut(cw, i);
+                }
+
+                for (var i = 0; i < nw.length; i++) {
+                    nw[i].className = "letter behind";
+                    nw[0].parentElement.style.opacity = 1;
+                    animateLetterIn(nw, i);
+                }
+
+                currentWord = currentWord == wordArray.length - 1 ? 0 : currentWord + 1;
+            }
+
+            function animateLetterOut(cw, i) {
+                setTimeout(function () {
+                    cw[i].className = "letter out";
+                }, i * 80);
+            }
+
+            function animateLetterIn(nw, i) {
+                setTimeout(function () {
+                    nw[i].className = "letter in";
+                }, 340 + i * 80);
+            }
+
+            function splitLetters(word) {
+                var content = word.innerHTML;
+                word.innerHTML = "";
+                var letters = [];
+                for (var i = 0; i < content.length; i++) {
+                    var letter = document.createElement("span");
+                    letter.className = "letter";
+                    letter.innerHTML = content.charAt(i);
+                    word.appendChild(letter);
+                    letters.push(letter);
+                }
+
+                wordArray.push(letters);
+            }
+
+            changeWord();
+            setInterval(changeWord, 4000);
+
+            var $cont = document.querySelector(".cont");
+            var $elsArr = [].slice.call(document.querySelectorAll(".el"));
+            var $closeBtnsArr = [].slice.call(document.querySelectorAll(".el__close-btn"));
+
+            setTimeout(function () {
+                $cont.classList.remove("s--inactive");
+            }, 200);
+
+            $elsArr.forEach(function ($el) {
+                $el.addEventListener("click", function () {
+                    if (this.classList.contains("s--active")) return;
+                    $cont.classList.add("s--el-active");
+                    this.classList.add("s--active");
+                });
+            });
+
+            $closeBtnsArr.forEach(function ($btn) {
+                $btn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    $cont.classList.remove("s--el-active");
+                    document.querySelector(".el.s--active").classList.remove("s--active");
+                });
+            });
+        </script>
+    </body>
+</html>

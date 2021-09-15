@@ -1,0 +1,396 @@
+<html lang="en">
+    <title>Homepage</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Navbar -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="shop.css" />
+    <!-- progress bar -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <body>
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-black w3-card">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="/" class="w3-bar-item w3-button w3-padding-large">Home</a>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Videos">
+                        Videos
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/chest" class="w3-bar-item w3-button">Chest workouts</a>
+                        <a href="/shoulder" class="w3-bar-item w3-button">Shoulder workouts</a>
+                        <a href="/arm" class="w3-bar-item w3-button">Arm workouts</a>
+                        <a href="/back" class="w3-bar-item w3-button">Back workouts</a>
+                        <a href="/abs" class="w3-bar-item w3-button">Abs workouts</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Healthy Living">
+                        Healthy Living
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/cookingtips" class="w3-bar-item w3-button">Cooking tips</a>
+                        <a href="/nutritionfacts" class="w3-bar-item w3-button">Nutrition facts</a>
+                        <a href="/mealplans" class="w3-bar-item w3-button">Meal plans</a>
+                    </div>
+                </div>
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-padding-large w3-button" title="Community">
+                        Community
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="/community" class="w3-bar-item w3-button">Community</a>
+                        <a href="/write-posts" class="w3-bar-item w3-button">Write blogs</a>
+                        <a href="/myblogs" class="w3-bar-item w3-button">My blogs</a>
+                    </div>
+                </div>
+
+                <a href="/store" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Store</a>
+                <a href="/logincus" class="w3-bar-item w3-button w3-padding-large w3-hide-small" >Login</a>
+                {{!-- <a href="/logincus" style="text-decoration: none; color: white;"><p style="margin-right: -750px; padding-top: 12px;"> Login </p></a> --}}
+                <a href="/search" class="w3-bar-item w3-button w3-padding-large w3-hide-small" style="margin-left: 620px; "><i class="fa fa-search" style="padding-top: 7px;" ></i></a>
+            </div>
+        </div>
+        <br />
+        <br />
+        <!-- Page content -->
+        <br />
+        <br />
+        <div class="carousel" style="margin-top: 20px;">
+            <div class="carousel__nav">
+                <span id="moveLeft" class="carousel__arrow">
+                    <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+                    </svg>
+                </span>
+                <span id="moveRight" class="carousel__arrow">
+                    <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                    </svg>
+                </span>
+            </div>
+            <div class="carousel-item carousel-item--1">
+                <div class="carousel-item__image"></div>
+                <div class="carousel-item__info">
+                    <div class="carousel-item__container">
+                        <h2 class="carousel-item__subtitle">The grand moment</h2>
+                        <h1 class="carousel-item__title">HomeFitness</h1>
+                        <p class="carousel-item__description">
+                            In a world of widespread misinformation, we believe in the power of trustworthy expertise. Our articles are reviewed by doctors, nurses, registered dietitians, certified personal trainers and other qualified
+                            experts.
+                        </p>
+                        <a href="#" class="carousel-item__btn">Explore the tour</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-item--2">
+                <div class="carousel-item__image"></div>
+                <div class="carousel-item__info">
+                    <div class="carousel-item__container">
+                        <h2 class="carousel-item__subtitle">Verifying Facts</h2>
+                        <h1 class="carousel-item__title">Top quality</h1>
+                        <p class="carousel-item__description">Accuracy is our top priority. Articles with our "Fact Checked" label cite only the most reliable sources of information that our editorial team has carefully vetted.</p>
+                        <a href="#" class="carousel-item__btn">Read the article</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item carousel-item--3">
+                <div class="carousel-item__image"></div>
+                <div class="carousel-item__info">
+                    <div class="carousel-item__container">
+                        <h2 class="carousel-item__subtitle">Perfect environment</h2>
+                        <h1 class="carousel-item__title">Indoor workouts</h1>
+                        <p class="carousel-item__description">
+                            For many of us, at-home workouts are the ultimate fitness dream: Gyms have their advantages, sure, but the idea of being able to focus solely on your body and exercise routine from the comfort of your own home —
+                            and not worry about what you're wearing, what you look like in the mirror next to other sweaty strangers or what equipment you'll use if the stuff you need is already taken — is the ideal workout scenario.
+                        </p>
+                        <a href="#" class="carousel-item__btn">Explore the videos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-content" style="max-width: 2000px; margin-top: 30px;">
+            <br />
+            <br />
+            <!-- Intro Section -->
+            <div class="w3-black" id="tour">
+                <div class="w3-content" style="max-width: 1100px;">
+                    <!-- About Section -->
+                    <div class="w3-row w3-padding-64" id="about">
+                        <div class="w3-col m6 w3-padding-large w3-hide-small">
+                            <br />
+
+                            <img src="https://img.livestrong.com/630x/clsd/getty/cd7927857dc24084b2b6321166e468f1.jpg?type=webp" class="w3-round w3-image w3-opacity-min" alt="Cooking Image" width="600" height="750" />
+                        </div>
+                        <div class="w3-col m6 w3-padding-large">
+                            <!-- The Introduction Section -->
+                            <div class="w3-container w3-content w3-center w3-padding-64" style="max-width: 800px; margin-top: 0px;" id="band">
+                                <div class="textcontainer">
+                                    <span class="particletext hearts">Welcome to Home Fitness</span>
+                                    <p class="w3-opacity"><i> ~ A Comprehensive Environment ~ </i></p>
+                                </div>
+                                <p class="w3-large w3-text-grey w3-hide-medium" style="text-align: justify; width: 500px; ">
+                                    <i>
+                                        "We hold our articles to the highest editorial standards by conducting original reporting, citing recent and relevant research and providing full context to ensure readers have all the facts they need
+                                        to make important decisions about their health."
+                                    </i>
+                                </p>
+                                <p style="text-align: right;"><i>- Thank you</i></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+
+                <div class="w3-container w3-content w3-padding-64" style="max-width: 1200px;">
+                    <h1 style="text-align: center;" >List Of Classes</h1>
+                    <p class="w3-opacity w3-center"><i>Remember to book your tickets!</i></p>
+                    <br />
+                    <div class="w3-row-padding w3-padding-32" style="margin-left: 30px;">
+                        {{#each classes}}
+                        <div class="w3-third w3-margin-bottom" style="width: 270px;">
+                            <img src="{{image}}" alt="Yoga" style="width: 100%; height: 170px;" class="w3-hover-opacity" />
+                            <div class="w3-container w3-white">
+                                <br />
+                                <h3><b>{{name}}</b></h3>
+                                <p class="w3-opacity"><i>{{date}}</i></p>
+                                <hr style="border-top: 1px solid rgb(12, 12, 12);" />
+                                <p><i>{{content}}</i></p>
+                                <br />
+                                <form action="/do-register/class/{{_id}}" method="post" >
+                                    <button type="submit" class="w3-button w3-black w3-margin-bottom" id="myBtn">Register</button></a>
+                                </form>
+                                <p><b style="color: rgb(5, 5, 5); font-size: 18px;"><i>{{student}}</i></b><span style="color: gray; font-size: 25px; opacity: 70%;"> /2</span></p>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+
+                <hr />
+                <!-- Trainers Section -->
+                <div class="w3-black" id="tour">
+                    <div class="w3-container w3-content w3-padding-64" style="max-width: 1200px;">
+                        <h1 style="text-align: center;">List Of Trainers</h1>
+                        <p class="w3-opacity w3-center"><i>Check the bio now!</i></p>
+                        <br />
+                        <div class="w3-row-padding w3-padding-32" style="margin-left: 30px;">
+                            {{#each trainers}}
+                            <div class="w3-third w3-margin-bottom" style="width: 270px;">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                        <div class="flip-card-front">
+                                            <img src="{{image}}" alt="Cicy Lu" style="width: 100%; height: 170px;" class="w3-hover-opacity" />
+                                        </div>
+                                        <div class="flip-card-back">
+                                            <div class="content">
+                                                <div class="icon_group">
+                                                    <a class="icon facebook" style="padding-top: 10px;">
+                                                        <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+                                                        <div class="background_circle"></div>
+                                                    </a>
+                                                    <a class="icon twitter" style="padding-top: 10px;">
+                                                        <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                                                        <div class="background_circle"></div>
+                                                    </a>
+                                                    <a class="icon instagram" style="padding-top: 8px;">
+                                                        <i class="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                                                        <div class="background_circle"></div>
+                                                    </a>
+                                                    <a class="icon pinterest" style="padding-top: 10px;">
+                                                        <i class="fa fa-pinterest-p fa-2x" aria-hidden="true"></i>
+                                                        <div class="background_circle"></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="w3-container w3-white">
+                                    <br />
+                                    <h3><b>{{name}}</b></h3>
+                                    <p class="w3-opacity"><i>{{birthday}}</i></p>
+                                    <hr style="border-top: 1px solid rgb(12, 12, 12);" />
+                                    <p><i>{{content}}</i></p>
+                                    <br />
+                                    {{!-- <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketBio').style.display='block'">Bio</button> --}}
+                                    <br />
+                                    <div class="heart"></div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="w3-content" style="max-width: 1100px;">
+                    <!-- About Section -->
+                    <div class="w3-row w3-padding-64" id="about">
+                        <div class="w3-col m6 w3-padding-large w3-hide-small">
+                            {{!-- <img src="https://i.pinimg.com/474x/67/2b/1c/672b1c03f6513af1c8a534ff6967fbc7.jpg" class="w3-round w3-image w3-opacity-min" alt="Cooking Image" width="600" height="750" /> --}}
+                            <div class="hover08 column">
+                                <figure><img src="https://i.pinimg.com/474x/92/a3/cd/92a3cd0fe2b0425756e092d62c67d566.jpg" /></figure>
+                            </div>
+                        </div>
+
+                        <div class="w3-col m6 w3-padding-large">
+                            <h1 class="w3-center">About Me</h1>
+                            <br />
+                            <p class="w3-center" style="font-size: 17px;"><i> ~ Designer & Creator ~ </i></p>
+                            <br />
+                            <br />
+                            <p class="w3-large w3-text-grey w3-hide-medium" style="text-align: justify;">
+                                <i>
+                                    "Hello there, I'm Huy Quang, 21 years old, and current a senior of FPT Greenwich University. This is my first product with the purpose of creating a comprehensive environment for people who love doing
+                                    workouts. Hope you enjoy it!"
+                                </i>
+                            </p>
+                            <br />
+                            <p style="font-family: Bradley Hand ITC; text-align: right; font-size: 20px;">- Huy Quang</p>
+                            <br />
+                            <br />
+                            <h6 class="w3-center"><i> ~ Peace ~ </i></h6>
+                            <br />
+                            <br />
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+                <hr />
+
+                <!-- The Contact Section -->
+                <div class="w3-container w3-content w3-padding-64" style="max-width: 800px;" id="contact">
+                    <h2 class="w3-wide w3-center">CONTACT</h2>
+                    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
+                    <div class="w3-row w3-padding-32">
+                        <div class="w3-col m6 w3-large w3-margin-bottom">
+                            <i class="fa fa-map-marker" style="width: 30px;"></i>
+                            Hanoi, Vietnam<br />
+                            <i class="fa fa-phone" style="width: 30px;"></i>
+                            Phone: +84 0961638946<br />
+                            <i class="fa fa-envelope" style="width: 30px;"> </i>
+                            Email: buiquanghuy742@mail.com<br />
+                        </div>
+                        <div class="w3-col m6">
+                            <form action="/action_page.php" target="_blank">
+                                <div class="w3-row-padding" style="margin: 0 -16px 8px -16px;">
+                                    <div class="w3-half">
+                                        <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name" />
+                                    </div>
+                                    <div class="w3-half">
+                                        <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email" />
+                                    </div>
+                                </div>
+                                <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message" />
+                                <br />
+                                <br />
+                                <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+                                    <i class="fa fa-paper-plane"></i>
+                                    Send Message
+                                </button>
+                                <a href="/" class="w3-button w3-light-grey w3-padding-large" style="text-decoration: none; font-size: 14px;">To the top</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function () {
+                $(".carousel-item").eq(0).addClass("active");
+                var total = $(".carousel-item").length;
+                var current = 0;
+                $("#moveRight").on("click", function () {
+                    var next = current;
+                    current = current + 1;
+                    setSlide(next, current);
+                });
+                $("#moveLeft").on("click", function () {
+                    var prev = current;
+                    current = current - 1;
+                    setSlide(prev, current);
+                });
+                function setSlide(prev, next) {
+                    var slide = current;
+                    if (next > total - 1) {
+                        slide = 0;
+                        current = 0;
+                    }
+                    if (next < 0) {
+                        slide = total - 1;
+                        current = total - 1;
+                    }
+                    $(".carousel-item").eq(prev).removeClass("active");
+                    $(".carousel-item").eq(slide).addClass("active");
+                    setTimeout(function () {}, 800);
+                    console.log("current " + current);
+                    console.log("prev " + prev);
+                }
+            });
+            $(function () {
+                $(".material-card > .mc-btn-action").click(function () {
+                    var card = $(this).parent(".material-card");
+                    var icon = $(this).children("i");
+                    icon.addClass("fa-spin-fast");
+
+                    if (card.hasClass("mc-active")) {
+                        card.removeClass("mc-active");
+
+                        window.setTimeout(function () {
+                            icon.removeClass("fa-arrow-left").removeClass("fa-spin-fast").addClass("fa-bars");
+                        }, 800);
+                    } else {
+                        card.addClass("mc-active");
+
+                        window.setTimeout(function () {
+                            icon.removeClass("fa-bars").removeClass("fa-spin-fast").addClass("fa-arrow-left");
+                        }, 800);
+                    }
+                });
+            });
+
+            function initparticles() {
+                hearts();
+            }
+
+            /*The measurements are ... whack (so to say), for more general text usage I would generate different sized particles for the size of text; consider this pen a POC*/
+
+            function hearts() {
+                $.each($(".particletext.hearts"), function () {
+                    var heartcount = ($(this).width() / 50) * 5;
+                    for (var i = 0; i <= heartcount; i++) {
+                        var size = $.rnd(60, 120) / 10;
+                        $(this).append('<span class="particle" style="top:' + $.rnd(20, 80) + "%; left:" + $.rnd(0, 95) + "%;width:" + size + "px; height:" + size + "px;animation-delay: " + $.rnd(0, 30) / 10 + 's;"></span>');
+                    }
+                });
+            }
+
+            jQuery.rnd = function (m, n) {
+                m = parseInt(m);
+                n = parseInt(n);
+                return Math.floor(Math.random() * (n - m + 1)) + m;
+            };
+
+            initparticles();
+        </script>
+    </body>
+</html>
