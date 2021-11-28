@@ -68,6 +68,7 @@ router.post('/do-register/class/:id', async function(req, res) {
         let client = await MongoClient.connect(url);
         let dbo = client.db("HomeFitness");
         var ObjectID = require("mongodb").ObjectID;
+        // result: find class that users want to register
         let result = await dbo.collection("classes").find({ _id: ObjectID(target_id) }).toArray();
         let check = 0
         let student = await dbo.collection("check_student").find({}).toArray();
@@ -104,7 +105,6 @@ router.post('/do-register/class/:id', async function(req, res) {
                         pass: 'homefitnesshf0704'
                     }
                 });
-
                 var mailOptions = {
                     from: 'homefitness.hf.0704@gmail.com',
                     to: cusInfo.email,
@@ -126,17 +126,6 @@ router.post('/do-register/class/:id', async function(req, res) {
         }
     }
 });
-
-
-
-// ------------------- SHOP PAGE -----------------
-// router.get('/shop', async function(req, res) {
-//     let client = await MongoClient.connect(url);
-//     let dbo = client.db("HomeFitness");
-//     let result = await dbo.collection("products").find({}).toArray();
-//     let result1 = await dbo.collection("cart").find({}).toArray();
-//     res.render("shop", { model: result, model1: result1 });
-// });
 
 
 // ------------------- COOKING TIPS --------------
@@ -325,7 +314,7 @@ router.get('/community', async function(req, res) {
     let posts = await dbo.collection("posts").find({}).sort({ _id: -1 }).toArray();
 
     var sortedArray = posts.sort(function(a, b) {
-        return b.num_comments + b.avg * 3 - a.num_comments - a.avg * 3;
+        return ((b.num_comments + b.avg * 3) / 4) - ((a.num_comments + a.avg * 3) / 4);
     });
     let pop_posts = [];
     for (var i = 0; i < 3; i++) {
@@ -409,7 +398,7 @@ router.post('/add-comments/post/:id', async function(req, res) {
         const result = await query.sort({ _id: -1 }).toArray();
         let posts = await dbo.collection("posts").find({}).sort({ _id: -1 }).toArray();
         var sortedArray = posts.sort(function(a, b) {
-            return b.num_comments - a.num_comments;
+            return (b.num_comments + b.avg * 3) / 4 - (a.num_comments + a.avg * 3) / 4;
         });
         let pop_posts = [];
         for (var i = 0; i < 3; i++) {
@@ -422,7 +411,11 @@ router.post('/add-comments/post/:id', async function(req, res) {
 
 
 router.post('/update/rate-score/:id', async function(req, res) {
-    const target_id = req.params.id;
+    const cusInfo = req.session.cusInfo;
+    if (!cusInfo) {
+        res.render("error1");
+    } else {
+        const target_id = req.params.id;
     let client = await MongoClient.connect(url);
     let dbo = client.db("HomeFitness");
     var ObjectID = require("mongodb").ObjectID;
@@ -449,7 +442,7 @@ router.post('/update/rate-score/:id', async function(req, res) {
     let posts = await dbo.collection("posts").find({}).sort({ _id: -1 }).toArray();
 
     var sortedArray = posts.sort(function(a, b) {
-        return b.num_comments + b.avg * 3 - a.num_comments - a.avg * 3;
+        return (b.num_comments + b.avg * 3) / 4 - (a.num_comments + a.avg * 3) / 4;
     });
     let pop_posts = [];
     for (var i = 0; i < 3; i++) {
@@ -473,6 +466,7 @@ router.post('/update/rate-score/:id', async function(req, res) {
     ]);
     const result = await query.sort({ _id: -1 }).toArray();
     res.render('community', { model: result, pop_posts: pop_posts });
+    }
 });
 
 router.get('/update/rate-score', async function(req, res) {
@@ -645,19 +639,20 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/do-register', async function(req, res, next) {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
     let newData = {
         username: req.body.username,
         email: req.body.email,
         role: "Customers",
-        password: hashedPassword,
+        password: req.body.password,
         image: req.body.image,
         date: new Date().getDay(),
     };
     let client = await MongoClient.connect(url);
     let dbo = client.db("HomeFitness");
+
     let usernames = await dbo.collection("users").findOne({ username: req.body.username });
     let email = await dbo.collection("users").findOne({ email: req.body.email });
+    
     if (usernames) {
         res.render("register", {
             errorMessage: "This username has been used!",
@@ -695,13 +690,16 @@ router.post('/do-adding-posts', async function(req, res, next) {
         user_id: cusInfo._id,
         date_post: new Date().getDay(),
         num_comments: 0,
+        rate_scores: 0,
+        time_rates: 0,
+        avg: 0.0,
     };
     let client = await MongoClient.connect(url);
     let dbo = client.db("HomeFitness");
     await dbo.collection("posts").insertOne(newData);
     let posts = await dbo.collection("posts").find({}).sort({ _id: -1 }).toArray();
     var sortedArray = posts.sort(function(a, b) {
-        return b.num_comments - a.num_comments;
+        return (b.num_comments + b.avg * 3) / 4 - (a.num_comments + a.avg * 3) / 4;
     });
     let pop_posts = [];
     for (var i = 0; i < 3; i++) {
@@ -727,7 +725,7 @@ router.get('/admin', async function(req, res) {
         let target_day4 = 4;
         let target_day5 = 5;
         let target_day6 = 6;
-        let target_day7 = 7;
+        let target_day7 = 0;
         let client = await MongoClient.connect(url);
         let dbo = client.db("HomeFitness");
         let result = await dbo.collection("posts").estimatedDocumentCount();
@@ -820,7 +818,6 @@ router.get("/logoutadmin", function(req, res) {
 
 // Forget password
 router.get("/account/password/reset", async function(req, res) {
-
     res.render("reset-password");
 });
 
@@ -1317,12 +1314,14 @@ router.get('/remove/posts/:id', async function(req, res, next) {
 });
 
 router.get('/cus/remove-posts/:id', async function(req, res, next) {
+    const customer = req.session.cusInfo;
     var id = req.params.id;
     var ObjectID = require("mongodb").ObjectID;
     let client = await MongoClient.connect(url);
     let dbo = client.db("HomeFitness");
     await dbo.collection("posts").findOneAndDelete({ _id: ObjectID(id) });
-    res.redirect("myblogs");
+    let result = await dbo.collection("posts").find({user_id: customer._id}).toArray();
+    res.render("myblogs", {posts: result, customer: customer});
 });
 
 
@@ -1723,6 +1722,7 @@ router.post('/do-add-to-cart/:id', async function(req, res, next) {
         var ObjectID = require("mongodb").ObjectID;
         let client = await MongoClient.connect(url);
         let dbo = client.db("HomeFitness");
+
         let result0 = await dbo.collection("cart").find({ user_id: cusInfo._id }).toArray();
         let names = [];
         for (var i = 0; i < result0.length; i++) {
@@ -1815,9 +1815,6 @@ router.get('/do-update-quantity', async function(req, res, next) {
     if (!cusInfo) {
         res.render("error1");
     } else {
-        console.log("Hello");
-        // const id = req.params.id;
-        // var ObjectID = require("mongodb").ObjectID;
         let client = await MongoClient.connect(url);
         let dbo = client.db("HomeFitness");
         let result = await dbo.collection("cart").find({ user_id: cusInfo._id }).toArray();
@@ -1844,6 +1841,7 @@ router.get('/remove-from-cart/:id', async function(req, res, next) {
         var ObjectID = require("mongodb").ObjectID;
         let client = await MongoClient.connect(url);
         let dbo = client.db("HomeFitness");
+
         await dbo.collection("cart").findOneAndDelete({ _id: ObjectID(id) });
         let result = await dbo.collection("cart").find({ user_id: cusInfo._id }).toArray();
         let cart_quantity = await dbo.collection("cart").find({ user_id: cusInfo._id }).count();
@@ -1854,7 +1852,6 @@ router.get('/remove-from-cart/:id', async function(req, res, next) {
         var total = subtotal + (subtotal * 5) / 100;
         res.render("cart", { model: result, cart_quantity: cart_quantity, subtotal: subtotal, total: total, cusInfo: cusInfo });
     }
-
 });
 
 // ---------- SEARCH PRODUCT SHOP --------------
@@ -1917,7 +1914,6 @@ router.post("/purchase", async(req, res) => {
     if (!cusInfo) {
         res.render("error1");
     } else {
-
         if (check.length == 0) {
             let cart_quantity = 0;
             var subtotal = 0;
@@ -1943,7 +1939,6 @@ router.post("/purchase", async(req, res) => {
                 code: req.body.code,
                 money: total,
             };
-
             await dbo.collection("purchase").insertOne(newData);
             await dbo.collection("cart").remove({ user_id: cusInfo._id });
             res.render("congrat");
@@ -1952,7 +1947,4 @@ router.post("/purchase", async(req, res) => {
     }
 });
 
-
-
-module.exports = router;
 module.exports = router;
