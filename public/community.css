@@ -25,6 +25,10 @@ h6 {
     transition: 0.4s;
 }
 
+.myStyle {
+    color: red;
+}
+
 .active,
 .btn-outline-success:hover {
     background-color: #ccc;

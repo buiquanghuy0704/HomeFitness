@@ -19,7 +19,7 @@ router.use(
 );
 
 
-// ------------- Connect to database ------------
+// ------------- CONNECT TO TH ------------
 const { MongoClient } = require("mongodb");
 // const { join } = require('path/posix');
 
@@ -45,7 +45,7 @@ async function getMongoClient() {
 }
 
 
-// ------------------- HOMEPAGE -----------------
+// ------------------- 1. HOMEPAGE -----------------
 router.get('/', async function(req, res) {
 
     let client = await MongoClient.connect(url);
@@ -196,9 +196,11 @@ router.get('/meal-content/:id', async function(req, res) {
     res.render("meal-content", { model: result });
 });
 
-// ----------------- VIDEOS PAGE ----------------
 
-// Chest
+
+// ----------------- 2. VIDEOS PAGE ----------------
+
+// 2.1.Chest video 
 
 router.get('/chest', async function(req, res) {
     const category = "Chest videos";
@@ -220,7 +222,8 @@ router.get('/chest-content/:id', async function(req, res) {
     res.render("blog-content", { model: result });
 });
 
-// Arm
+
+// 2.2. Arm
 
 router.get('/arm', async function(req, res) {
     const category = "Arm videos";
@@ -242,7 +245,9 @@ router.get('/arm-content/:id', async function(req, res) {
     res.render("blog-content", { model: result });
 });
 
-// Back
+
+// 2.3. Back
+
 router.get('/back', async function(req, res) {
     const category = "Back videos";
     let client = await MongoClient.connect(url);
@@ -263,7 +268,9 @@ router.get('/back-content/:id', async function(req, res) {
     res.render("blog-content", { model: result });
 });
 
-// Shoulder
+
+// 2.4. Shoulder
+
 router.get('/shoulder', async function(req, res) {
     const category = "Shoulder videos";
     let client = await MongoClient.connect(url);
@@ -284,7 +291,9 @@ router.get('/shoulder-content/:id', async function(req, res) {
     res.render("blog-content", { model: result });
 });
 
-// Abs
+
+// 2.5.Abs
+
 router.get('/abs', async function(req, res) {
     const category = "Abs videos";
     let client = await MongoClient.connect(url);
@@ -305,12 +314,19 @@ router.get('/abs-content/:id', async function(req, res) {
     res.render("blog-content", { model: result });
 });
 
-// -------------- COMMUNITY PAGE ----------------
+
+
+// -------------- 3. COMMUNITY PAGE ----------------
+
+
+// 3.1. Community page
+
 router.get('/community', async function(req, res) {
     const client = await MongoClient.connect(url);
     await client.connect();
-    const postCollection = await client.db('HomeFitness').collection('posts');
     let dbo = client.db("HomeFitness");
+    const postCollection = await dbo.collection('posts');
+
     let posts = await dbo.collection("posts").find({}).sort({ _id: -1 }).toArray();
 
     var sortedArray = posts.sort(function(a, b) {
@@ -339,6 +355,9 @@ router.get('/community', async function(req, res) {
     const result = await query.sort({ _id: -1 }).toArray();
     res.render('community', { model: result, pop_posts: pop_posts });
 });
+
+
+// 3.2. Adding comments
 
 router.post('/add-comments/post/:id', async function(req, res) {
     const cusInfo = req.session.cusInfo;
@@ -409,6 +428,7 @@ router.post('/add-comments/post/:id', async function(req, res) {
 });
 
 
+// 3.3. Update rating score
 
 router.post('/update/rate-score/:id', async function(req, res) {
     const cusInfo = req.session.cusInfo;
@@ -416,56 +436,104 @@ router.post('/update/rate-score/:id', async function(req, res) {
         res.render("error1");
     } else {
         const target_id = req.params.id;
-    let client = await MongoClient.connect(url);
-    let dbo = client.db("HomeFitness");
-    var ObjectID = require("mongodb").ObjectID;
-    const target_post = await dbo.collection('posts').findOne({ _id: ObjectID(target_id) });
-    let newData = {
-        name: target_post.name,
-        author: target_post.author,
-        date: target_post.date,
-        content: target_post.content,
-        image: target_post.image,
-        user_id: target_post.user_id,
-        date_post: target_post.date_post,
-        num_comments: target_post.num_comments,
-        rate_scores: target_post.rate_scores + parseInt(req.body.rate_scores),
-        time_rates: target_post.time_rates + 1,
-        avg: parseFloat(((target_post.rate_scores + parseInt(req.body.rate_scores)) / (target_post.time_rates + 1)).toFixed(1)),
-    };
-    await dbo
-        .collection("posts")
-        .updateOne({ _id: ObjectID(target_id) }, { $set: newData });
-
-    const postCollection = await client.db('HomeFitness').collection('posts');
-
-    let posts = await dbo.collection("posts").find({}).sort({ _id: -1 }).toArray();
-
-    var sortedArray = posts.sort(function(a, b) {
-        return (b.num_comments + b.avg * 3) / 4 - (a.num_comments + a.avg * 3) / 4;
-    });
-    let pop_posts = [];
-    for (var i = 0; i < 3; i++) {
-        pop_posts.push(sortedArray[i]);
-    }
-    const query = await postCollection.aggregate([{
-            "$addFields": {
-                "id": {
-                    "$toString": "$_id"
-                },
-            }
-        },
-        {
-            $lookup: {
-                from: 'comments',
-                localField: 'id',
-                foreignField: 'post_id',
-                as: 'comments',
+        let client = await MongoClient.connect(url);
+        let dbo = client.db("HomeFitness");
+        var ObjectID = require("mongodb").ObjectID;
+        const target_post = await dbo.collection('posts').findOne({ _id: ObjectID(target_id) });
+        const target_posts = await dbo.collection('check_rate').find({ post_id: target_id }).toArray();
+        var check = 0;
+        for (var i = 0; i < target_posts.length; i++) {
+            if (target_posts[i].user_id == cusInfo._id) {
+                check += 1;
+                break;
             }
         }
-    ]);
-    const result = await query.sort({ _id: -1 }).toArray();
-    res.render('community', { model: result, pop_posts: pop_posts });
+        if (check == 0) {
+            let newRate = {
+                user_id: cusInfo._id,
+                post_id: target_id,
+            }
+            await dbo.collection("check_rate").insertOne(newRate);
+            let newData = {
+                name: target_post.name,
+                author: target_post.author,
+                date: target_post.date,
+                content: target_post.content,
+                image: target_post.image,
+                user_id: target_post.user_id,
+                date_post: target_post.date_post,
+                num_comments: target_post.num_comments,
+                rate_scores: target_post.rate_scores + parseInt(req.body.rate_scores),
+                time_rates: target_post.time_rates + 1,
+                avg: parseFloat(((target_post.rate_scores + parseInt(req.body.rate_scores)) / (target_post.time_rates + 1)).toFixed(1)),
+            };
+            await dbo
+                .collection("posts")
+                .updateOne({ _id: ObjectID(target_id) }, { $set: newData });
+
+            const postCollection = await client.db('HomeFitness').collection('posts');
+
+            let posts = await dbo.collection("posts").find({}).sort({ _id: -1 }).toArray();
+
+            var sortedArray = posts.sort(function(a, b) {
+                return (b.num_comments + b.avg * 3) / 4 - (a.num_comments + a.avg * 3) / 4;
+            });
+            let pop_posts = [];
+            for (var i = 0; i < 3; i++) {
+                pop_posts.push(sortedArray[i]);
+            }
+            const query = await postCollection.aggregate([{
+                    "$addFields": {
+                        "id": {
+                            "$toString": "$_id"
+                        },
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'comments',
+                        localField: 'id',
+                        foreignField: 'post_id',
+                        as: 'comments',
+                    }
+                }
+            ]);
+            const result = await query.sort({ _id: -1 }).toArray();
+            res.render('community', { model: result, pop_posts: pop_posts });
+        } else {
+
+            const msg = "You cannot rate 2 times for a post!";
+
+            const postCollection = await client.db('HomeFitness').collection('posts');
+
+            let posts = await dbo.collection("posts").find({}).sort({ _id: -1 }).toArray();
+
+            var sortedArray = posts.sort(function(a, b) {
+                return (b.num_comments + b.avg * 3) / 4 - (a.num_comments + a.avg * 3) / 4;
+            });
+            let pop_posts = [];
+            for (var i = 0; i < 3; i++) {
+                pop_posts.push(sortedArray[i]);
+            }
+            const query = await postCollection.aggregate([{
+                    "$addFields": {
+                        "id": {
+                            "$toString": "$_id"
+                        },
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'comments',
+                        localField: 'id',
+                        foreignField: 'post_id',
+                        as: 'comments',
+                    }
+                }
+            ]);
+            const result = await query.sort({ _id: -1 }).toArray();
+            res.render('community', { msg: msg, model: result, pop_posts: pop_posts });
+        }
     }
 });
 
@@ -479,6 +547,9 @@ router.get('/update/rate-score', async function(req, res) {
     // res.render('myblogs');
 });
 
+
+// 3.4. My blog page
+
 router.get('/myblogs', async function(req, res) {
     const cusInfo = req.session.cusInfo;
     if (!cusInfo) {
@@ -490,12 +561,11 @@ router.get('/myblogs', async function(req, res) {
         let result = await dbo.collection("posts").find({ user_id: cus_id }).toArray();
         res.render('myblogs', { posts: result, customer: cusInfo });
     }
-    // res.render('myblogs');
 });
 
-// ------------------ ADDING PAGE ----------------
 
-// Adding blogs
+// 3.5. Adding tips
+
 router.get('/adding-tips', function(req, res) {
     res.render('adding-tips')
 });
@@ -516,7 +586,9 @@ router.post('/do-adding-tips', async function(req, res, next) {
     res.redirect("statistics-tips");
 });
 
-// Adding videos
+
+// 3.6. Adding videos
+
 router.get('/adding-videos', function(req, res) {
     res.render('adding-videos')
 });
@@ -652,7 +724,7 @@ router.post('/do-register', async function(req, res, next) {
 
     let usernames = await dbo.collection("users").findOne({ username: req.body.username });
     let email = await dbo.collection("users").findOne({ email: req.body.email });
-    
+
     if (usernames) {
         res.render("register", {
             errorMessage: "This username has been used!",
@@ -756,7 +828,7 @@ router.get('/admin', async function(req, res) {
         let p_day7 = await dbo.collection("posts").find({ date_post: target_day7 }).count();
 
         res.render("admin", {
-            avenue: avenue,
+            avenue: avenue.toFixed(1),
             num_posts: result,
             num_users: result1,
             plan: result3,
@@ -1320,8 +1392,8 @@ router.get('/cus/remove-posts/:id', async function(req, res, next) {
     let client = await MongoClient.connect(url);
     let dbo = client.db("HomeFitness");
     await dbo.collection("posts").findOneAndDelete({ _id: ObjectID(id) });
-    let result = await dbo.collection("posts").find({user_id: customer._id}).toArray();
-    res.render("myblogs", {posts: result, customer: customer});
+    let result = await dbo.collection("posts").find({ user_id: customer._id }).toArray();
+    res.render("myblogs", { posts: result, customer: customer });
 });
 
 
@@ -1946,5 +2018,11 @@ router.post("/purchase", async(req, res) => {
 
     }
 });
+
+module.exports = router;
+
+module.exports = router;
+
+module.exports = router;
 
 module.exports = router;

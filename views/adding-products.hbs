@@ -32,8 +32,8 @@
                             <form action="/do-adding-products" method="POST">
                                 <textarea type="text" name="name" placeholder="Name of the product.." rows="1" required /></textarea>
                                 <textarea type="text" name="category" placeholder="Category of the product.." rows="1" required /></textarea>
-                                <input type="number" name="price" placeholder="Price.." rows="1" required/>
-                                <input type="number" name="stock" placeholder="Stock.." rows="1" required/>
+                                <input type="number" name="price" placeholder="Price.." rows="1" min="1" required/>
+                                <input type="number" name="stock" placeholder="Stock.." rows="1" min="1" required/>
                                 <textarea type="text" name="image" placeholder="Link for the image.." rows="1" required/></textarea>
                                 <input type="submit" value="Submit" />
                             </form>
